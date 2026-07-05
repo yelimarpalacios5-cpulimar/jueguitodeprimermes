@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤎Rescatando al amor de mi vida🤎</title>
+    <style>
+        /* Optimización total para teléfonos celulares */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #ffdeeb;
+            color: #4a0e2e;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        #game-container {
+            background-color: #fff0f6;
+            border: 4px solid #ff85b3;
+            border-radius: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px; /* Tamaño ideal de pantalla de móvil */
+            text-align: center;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .screen { display: none; }
+        .active { display: block; }
+        
+        h2 { font-size: 22px; margin-bottom: 10px; }
+        h3 { font-size: 18px; color: #ff5c99; }
+        p { font-size: 15px; line-height: 1.4; }
+
+        button {
+            background-color: #ff85b3;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            margin: 8px 0;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%; /* Botones grandes que ocupan el ancho en celular */
+            box-sizing: border-box;
+            transition: 0.2s;
+            box-shadow: 0px 3px 0px #cc5a82;
+        }
+        button:active {
+            transform: translateY(3px);
+            box-shadow: none;
+        }
+        
+        /* Espacios para tus imágenes de Canva */
+        .avatar-box {
+            width: 100%;
+            height: 180px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe3ee;
+            border: 2px dashed #ff85b3;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .emoji-fallback {
+            font-size: 50px;
+        }
+
+        /* --- ANIMACIONES NUEVAS --- */
+
+/* 1. Efecto flotar para los avatares */
+.avatar-box img {
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); } /* Sube 10 píxeles */
+    100% { transform: translateY(0px); } /* Vuelve a bajar */
+}
+
+/* 2. Efecto latido/brillo para los títulos */
+h2, h3 {
+    animation: latido 2s ease-in-out infinite;
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); } /* Se agranda un poquito */
+    100% { transform: scale(1); }
+}
+
+/* 3. Efecto de transición suave al cambiar de pantalla */
+.screen.active {
+    display: block;
+    animation: aparecer 0.5s ease-in-out;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+    </style>
+</head>
+<body>
+
+<div id="game-container">
+    
+    <!-- PANTALLA 1: INICIO -->
+    <div id="screen-welcome" class="screen active">
+        <h2>✨ ¡Holaaaa Amorr! ✨</h2>
+        <div class="avatar-box">
+            <img src="dragón con fuego.png" alt="dragón con fuego">
+            <img src="yelimar.png.png" alt="yeli feliz">
+            <!-- REEMPLAZA EL EMOJI CON TU IMAGEN DE CANVA (Ej: <img src="inicio.png">) -->
+            <span class="emoji-fallback"></span>
+        </div>
+        <p>¡Feliz primer mes, mi vidaa! Pero... ¡oh no! El temible Dragón Ignis me ha secuestrado. Si me conoces lo suficiente, ¡responde bien y rescátame!</p>
+        <button onclick="changeScreen('screen-q1')">¡EMPEZAR A RESCATARTE!</button>
+    </div>
+
+    <!-- PANTALLA 2: PREGUNTA 1 (Día de la semana) -->
+    <div id="screen-q1" class="screen">
+        <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Qué día de la semana fue cuando se conocieron por primera vez?</p>
+        <button onclick="wrongAnswer()">A) Un viernes por la noche</button>
+        <button onclick="changeScreen('screen-q2')">B) Un miércoles por la tarde</button>
+        <button onclick="wrongAnswer()">C) Un miércoles</button>
+    </div>
+
+    <!-- PANTALLA 3: PREGUNTA 2 (Detalle que te recuerda) -->
+    <div id="screen-q2" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es el detalle que siempre te recuerda a Yeli?</p>
+        <button onclick="changeScreen('screen-q3')">A) Un peluche de Kuromi</button>
+        <button onclick="wrongAnswer()">B) Salir al cine</button>
+        <button onclick="wrongAnswer()">C) Una caja de chocolates</button>
+    </div>
+
+    <!-- PANTALLA 4: PREGUNTA 3 (Comida favorita) -->
+    <div id="screen-q3" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es la comida favorita de Yeli que comería todos los días?</p>
+        <button onclick="wrongAnswer()">A) KFC</button>
+        <button onclick="changeScreen('screen-q4')">B) Sushi</button>
+        <button onclick="wrongAnswer()">C) Cachapa</button>
+    </div>
+
+    <!-- PANTALLA 5: PREGUNTA 4 (Serie favorita) -->
+    <div id="screen-q4" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>Si Yeli se queda toda la noche viendo una serie, ¿cuál sería?</p>
+        <button onclick="changeScreen('screen-q5')">A) Miraculous: Las Aventuras de Ladybug y Cat Noir</button>
+        <button onclick="wrongAnswer()">B) Soy Luna</button>
+        <button onclick="wrongAnswer()">C) Belleza verdadera</button>
+    </div>
+
+    <!-- PANTALLA 6: PREGUNTA 5 (Película de terror) -->
+    <div id="screen-q5" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es la película de terror favorita de Yeli con la que más se asusta o disfruta?</p>
+        <button onclick="wrongAnswer()">A) El Conjuro 3</button>
+        <button onclick="wrongAnswer()">B) Viernes 13</button>
+        <button onclick="changeScreen('screen-q6')">C) La casa de los abuelos</button>
+    </div>
+
+    <!-- PANTALLA 7: PREGUNTA 6 (Anime favorito) -->
+    <div id="screen-q6" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es el anime favorito de Yeli?</p>
+        <button onclick="wrongAnswer()">A) Naruto</button>
+        <button onclick="wrongAnswer()">B) Jujutsu Kaisen</button>
+        <button onclick="changeScreen('screen-q7')">C) Shainsaw man</button>
+    </div>
+
+    <!-- PANTALLA 8: PREGUNTA 7 (Cantante favorito versión español) -->
+    <div id="screen-q7" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es el cantante favorito versión español de Yeli que podría escuchar toda su vida y no se cansaría?</p>
+        <button onclick="wrongAnswer()">A) Yan Block</button>
+        <button onclick="wrongAnswer()">B) Humbe</button>
+        <button onclick="changeScreen('screen-q8')">C) Álvaro Díaz</button>
+    </div>
+
+    <!-- PANTALLA 9: PREGUNTA 8 (Cantante favorito versión inglés) -->
+    <div id="screen-q8" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es el cantante favorito versión inglés de Yeli que podría escuchar toda su vida y no se cansaría?</p>
+        <button onclick="wrongAnswer()">A) Bruno Marc</button>
+        <button onclick="wrongAnswer()">B) Justin Bieber</button>
+        <button onclick="changeScreen('screen-q9')">C) The Weeknd</button>
+    </div>
+
+    <!-- PANTALLA 10: PREGUNTA 9 (Cantante favorita versión español) -->
+    <div id="screen-q9" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es la cantante favorita versión español de Yeli que podría escuchar toda su vida y no se cansaría?</p>
+        <button onclick="wrongAnswer()">A) Young Miko</button>
+        <button onclick="wrongAnswer()">B) Bad Gyal</button>
+        <button onclick="changeScreen('screen-q10')">C) De La Rose</button>
+    </div>
+
+    <!-- PANTALLA 11: PREGUNTA 10 (Cantante favorita versión inglés) -->
+    <div id="screen-q10" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es la cantante favorita versión inglés de Yeli que podría escuchar toda su vida y no se cansaría?</p>
+        <button onclick="wrongAnswer()">A) Doja cat</button>
+        <button onclick="wrongAnswer()">B) Rihanna</button>
+        <button onclick="changeScreen('screen-q11')">C) Billie Eilish (algunas canciones)</button>
+    </div>
+
+    <!-- PANTALLA 12: PREGUNTA 11 (Banda favorita versión español) -->
+    <div id="screen-q11" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es el banda favorita versión español de Yeli que podría escuchar toda su vida y no se cansaría?</p>
+        <button onclick="wrongAnswer()">A) Mecano</button>
+        <button onclick="wrongAnswer()">B) Soda Stereo</button>
+        <button onclick="changeScreen('screen-q12')">C) Latin Mafia</button>
+    </div>
+
+    <!-- PANTALLA 13: PREGUNTA 12 (Banda favorita versión inglés) -->
+    <div id="screen-q12" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es la banda favorita versión inglés de Yeli que podría escuchar toda su vida y no se cansaría?</p>
+        <button onclick="wrongAnswer()">A) Cigarettes After Sex</button>
+        <button onclick="wrongAnswer()">B) Arctic Monkeys</button>
+        <button onclick="changeScreen('screen-q13')">C) Chase Aclantic</button>
+    </div>
+
+     <!-- PANTALLA 14: PREGUNTA 13 (Pais) -->
+    <div id="screen-q13" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿A qué pais quiere viajar Yeli?</p>
+        <button onclick="wrongAnswer()">A) Argentina</button>
+        <button onclick="wrongAnswer()">B) Ecuador</button>
+        <button onclick="changeScreen('screen-q14')">C) Francia</button>
+    </div>
+
+    <!-- PANTALLA 15: PREGUNTA 14 (Animal Favorito) -->
+    <div id="screen-q14" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cúal es el animal favorito de Yeli?</p>
+        <button onclick="wrongAnswer()">A) Gato</button>
+        <button onclick="wrongAnswer()">B) Perro</button>
+        <button onclick="changeScreen('screen-q15')">C) Mono</button>
+    </div>
+
+    <!-- PANTALLA 16: PREGUNTA 15 (Bebida Favorita) -->
+    <div id="screen-q15" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cúal es la bebida favorita de Yeli?</p>
+        <button onclick="wrongAnswer()">A) Agua</button>
+        <button onclick="wrongAnswer()">B) Jugo</button>
+        <button onclick="changeScreen('screen-q16')">C) Refresco</button>
+    </div>
+
+    <!-- PANTALLA 17: PREGUNTA 16 (Color Favorito) -->
+    <div id="screen-q16" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cúal es el color favorito de Yeli?</p>
+        <button onclick="wrongAnswer()">A) Negro</button>
+        <button onclick="wrongAnswer()">B) Blanco</button>
+        <button onclick="changeScreen('screen-q17')">C) Azul</button>
+    </div>
+
+    <!-- PANTALLA 18: PREGUNTA 17 (Fruta Favorita) -->
+    <div id="screen-q17" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cúal es la fruta favorita de Yeli?</p>
+        <button onclick="wrongAnswer()">A) Melon</button>
+        <button onclick="wrongAnswer()">B) Mango</button>
+        <button onclick="changeScreen('screen-q18')">C) Cambur</button>
+    </div>
+
+    <!-- PANTALLA 19: PREGUNTA 18 (Mayor miedo o fobia)) -->
+    <div id="screen-q18" class="screen" <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón de brazos.png" alt="dragón de brazos">
+        </div>
+        <h3>🐉 Dragón Ignis:</h3>
+        <p>¿Cuál es el mayor miedo o fobia de Yeli a la que le huye por completo?</p>
+        <button onclick="wrongAnswer()">A) Las alturas</button>
+        <button onclick="wrongAnswer()">B) La oscuridad</button>
+        <button onclick="changeScreen('screen-q19')">C) Claustrofobia</button>
+    </div>
+
+    <!-- PANTALLA 20: PREGUNTA 19 (Lo que mas me enamora) -->
+    <div id="screen-q19" class="screen">
+         <!-- Ponle el contenedor aqui abajo -->
+        <div class="avatar-box">
+            <img src="dragón con fuego.png" alt="dragón de fuego">
+        </div>
+        <h3>🐉 Dragón Ignis: ¡¡ÚLTIMA PREGUNTA - EL FINAL!!</h3>
+        <p>¡NO PUEDE SER! Has respondido todo bien... ¡Esta es mi última oportunidad para destruirte! Si fallas aquí, Yeli será mía para siempre:</p>
+        <P>¿Qué es lo que más enamora a Yeli de Eudi en su momento favorito juntas?</P>
+        <button onclick="wrongAnswer()">A) Cuando me da abrazos de la nada</button>
+        <button onclick="wrongAnswer()">B) Cuando hacemos el amor</button>
+        <button onclick="changeScreen('screen-victory')">C) Cuando me llena de besos por toda la cara</button>
+    </div>
+
+    <!-- PANTALLA DE ERROR: CUANDO PIERDE -->
+    <div id="screen-lose" class="screen">
+        <h3>❌ ¡Casi te ataca el dragón! ❌</h3>
+        <div class="avatar-box">
+            <img src="dragón sonriente.png" alt="dragón ">
+            <img src="yelimar llorando.png.png" alt="yeli llorando">
+            <!-- AQUÍ VA TU AVATAR LLORANDO DE CANVA (Ej: <img src="jelly-llorando.png">) -->
+            <span class="emoji-fallback"></span>
+        </div>
+        <p id="lose-message">¡Oh no! ¡El dragón me ha capturado y me lleva a su castillo! ¡Resuélvelo bien la próxima para salvarme</p>
+        <button onclick="returnToQuestion()">Intentar la pregunta otra vez 💖</button>
+    </div>
+
+    <!-- PANTALLA DE VICTORIA -->
+    <div id="screen-victory" class="screen">
+        <h2>🎉 ¡ME RESCATASTE! 🎉</h2>
+        <div class="avatar-box">
+            <img src="eudi y yeli.png.png" alt="eudi y yo">
+            <!-- AQUÍ PONES LA IMAGEN DE USTEDES DOS JUNTAS (Ej: <img src="juntas.png">) -->
+            <span class="emoji-fallback"></span>
+        </div>
+        <p>¡Eres la mejor novia del mundo! Demostraste que me conoces a la perfección. ¡Feliz 1° Mes de novias, mi vidita! Te amo inmensamente desde aquel 18 de febrero. ❤️</p>
+    </div>
+
+</div>
+
+<script>
+    // Variable para recordar en qué pantalla se quedó antes de fallar
+    let currentQuestionScreen = 'screen-welcome';
+
+    function changeScreen(screenId) {
+        // Guardamos la pantalla si es una pregunta, para poder regresar si falla
+        if(screenId.startsWith('screen-q')) {
+            currentQuestionScreen = screenId;
+        }
+        
+        document.querySelectorAll('.screen').forEach(screen => {
+            screen.classList.remove('active');
+        });
+        document.getElementById(screenId).classList.add('active');
+    }
+
+    function wrongAnswer() {
+        // En vez de un alert molesto, la manda a la pantalla de avatar llorando
+        changeScreen('screen-lose');
+    }
+
+    function returnToQuestion() {
+        // Regresa exactamente a la pregunta donde falló
+        changeScreen(currentQuestionScreen);
+    }
+</script>
+
+</body>
+</html>
